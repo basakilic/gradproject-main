@@ -3,10 +3,11 @@ import pytesseract
 import cv2
 import re
 import spacy
+from pymongo import MongoClient
 from PIL import Image
 from pytesseract import Output
 from spacy import displacy
-from pymongo import MongoClient
+
 
 image_dir='gradproject-main\\'
 images = [file for file in os.listdir(image_dir) if file.lower().endswith(".jpg")]
