@@ -9,7 +9,7 @@ from pytesseract import Output
 from spacy import displacy
 
 
-mongo_uri = 'mongodb+srv://lanetguy:PlEpqor2xtmZq3jo@cluster0.g7mhazp.mongodb.net/'  # MongoDB sunucu adresini ve portunu ayarlayın
+mongo_uri = 'mongodb+srv://basak:basakgradproject@cluster0.g7mhazp.mongodb.net/'  # MongoDB sunucu adresini ve portunu ayarlayın
 client = MongoClient(mongo_uri)
 
 # Veritabanı adı ve koleksiyon adı
