@@ -9,10 +9,10 @@ function Profile() {
   const email = localStorage.getItem('email');
   const memberstatus = localStorage.getItem('memberstatus');
   const navigate = useNavigate();
-  if(memberstatus === 'null'){
+  if (memberstatus === 'null') {
     localStorage.setItem('memberstatus', 'Guest');
   }
-  
+
   const handleEditProfile = () => {
     navigate('/editprofile');
     console.log('Edit profile button clicked');
@@ -22,7 +22,7 @@ function Profile() {
     navigate('/signup');
     console.log('Sign up button clicked');
   };
-  
+
 
   return (
     <div>
@@ -61,11 +61,11 @@ function Profile() {
             </div>
           </div>
           {memberstatus === 'Guest' && (
-                <button className="become-user-button" onClick={handleSignup}>
-                  Become an User
-                </button>
-              )}
-         
+            <button className="become-user-button" onClick={handleSignup}>
+              Become an User
+            </button>
+          )}
+
         </div>
       </body>
     </div>
