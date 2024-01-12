@@ -1,0 +1,111 @@
+body {
+  background-color: rgb(52, 113, 227) !important;
+}
+.profile-container {
+  margin: 20px auto;
+  max-width: 600px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #fafafa;
+  
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.logout-button {
+  background-color: #86accb;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+ 
+  
+}
+
+.logout-button:hover {
+  background-color:crimson;
+}
+.edit-profile-button {
+  background-color: #86accb;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  
+}
+
+.edit-profile-button:hover {
+  background-color:lightblue;
+} 
+.profile-section {
+  margin-bottom: 20px;
+}
+
+.profile-section-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.profile-info {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.profile-info-label {
+  font-weight: bold;
+  width: 120px;
+}
+.become-organizer-button {
+  background-color: #a1c1a1;
+  color: #fff;
+  padding: 7px 6px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 70%;
+}
+
+.become-organizer-button:hover {
+  background-color: #43A047;
+}
+
+.create-event-button {
+  background-color: #a1c1a1;
+  color: #fff;
+  padding: 7px 6px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 80%;
+}
+
+.create-event-button:hover {
+  background-color: #43A047;
+}
+
+.profile-info-value {
+  margin-left: 10px;
+}
