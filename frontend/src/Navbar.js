@@ -1,7 +1,8 @@
-import React from 'react';
+// Navbar.js
+
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import './Navbar.css';
-import { useState, useEffect } from 'react';
+import './Navbar.css'; // Include the CSS file
 import logo from './logo.png';
 
 function Navbar() {
@@ -78,16 +79,28 @@ function Navbar() {
   };
 
   const renderUserSpecificLinks = () => {
-    // The same user-specific links logic
-    // ...
-
-    return null;
+    return (
+      <li className={`nav-item dropdown ${location.pathname === '/profile' ? 'active' : ''}`}>
+        <div className="dropdown welcome-dropdown">
+          <button className="dropbtn">
+            Welcome {username}
+          </button>
+          <div className="dropdown-content">
+            <Link to="/profile">Profile</Link>
+            <a onClick={handleLogout}>Logout</a>
+          </div>
+        </div>
+      </li>
+    );
   };
+
+
+
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/homepage">
-        <img src={logo} alt="HugsForBugs logo" width="200" height="50" />
+        <img src={logo} alt="ScanRes logo" width="200" height="50" />
       </Link>
 
       <button
@@ -103,27 +116,13 @@ function Navbar() {
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
-          <li className={`nav-item ${location.pathname === '/homepage' ? 'active' : ''}`}>
-            <Link to="/homepage" className="nav-link">
-              Home Page
-            </Link>
-          </li>
-          <li className={`nav-item ${location.pathname === '/showevents' ? 'active' : ''}`}>
-            <Link to="/showevents" className="nav-link">
-              Events
-            </Link>
-          </li>
+
+          <Link to="/login" style={{ position: 'absolute', top: '25px', right: '150px', textAlign: 'center' }}>
+            <button className='btn btn-success'>Login</button>
+          </Link>
           {renderUserSpecificLinks()}
         </ul>
         <div className="mx-auto">{renderSearchBar()}</div>
-      </div>
-
-      <div className="dropdown">
-        <button className="dropbtn">{username}</button>
-        <div className="dropdown-content">
-          <a href="/profile">Profile</a>
-          <a onClick={handleLogout}>Logout</a>
-        </div>
       </div>
     </nav>
   );
