@@ -10,18 +10,18 @@ import EditProfile from './EditProfile'
 
 
 function App() {
-    return (
-        <BrowserRouter>
-          <Routes>
-          <Route path='/' element={<Homepage />}></Route>
-          <Route path='/homepage' element={<Homepage />}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/signup' element={<Signup />}></Route>
-          <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
-          <Route path='/profile' element={<Profile />}></Route>
-          <Route path='/editprofile' element={<EditProfile />}></Route>
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Homepage />}></Route>
+        <Route path='/homepage' element={<Homepage />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/signup' element={<Signup />}></Route>
+        <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
+        <Route path='/profile' element={<Profile />}></Route>
+        <Route path='/editprofile' element={<Profile />}></Route>
 
-          </Routes>
-        </BrowserRouter>)
-    }
+      </Routes>
+    </BrowserRouter>)
+}
 export default App
