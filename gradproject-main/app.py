@@ -1,12 +1,9 @@
-import os
-import pytesseract
-import cv2
-import re
-import spacy
 from pymongo import MongoClient
+import pytesseract
 from PIL import Image
-from pytesseract import Output
-from spacy import displacy
+import re
+import pandas as pd
+import os
 
 
 mongo_uri = 'mongodb+srv://basak:basakgradproject@cluster0.g7mhazp.mongodb.net/'  # MongoDB sunucu adresini ve portunu ayarlayın
@@ -20,31 +17,60 @@ collection_name = 'receipts'
 db = client[db_name]
 collection = db[collection_name]
 #Burada OCR okuyacak ve hangi verilerin olduğuna karar verip atama yapacak
-company_name= 'Örnek Firma'
-address= 'Örnek Adres' 
-date='01.01.2024'
-time='12.00'
-product_names='Örnek Ürün' 
-product_price=10.00
-total_amount=10.0
-topKDV=2 
+
+
+
+images_file = "gradproject-main\pictures"
+dosya_listesi = os.listdir(images_file)
+resim_dosyalar = [dosya for dosya in dosya_listesi if dosya.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp'))]
+df_date = pd.DataFrame()
+df_time = pd.DataFrame()
+
+for resim_dosya in resim_dosyalar:
+    print("-------------------------------------------")
+
+    dosya_yolu = os.path.join(images_file, resim_dosya)
+    metin = pytesseract.image_to_string(Image.open(dosya_yolu), lang='tur')
+    print(f"{resim_dosya} dosyasından okunan metin: {metin}")
+    date_pattern = r'(\d{1,2}/\d{1,2}/\d{4})' # sadece gun ve ay seklinde de olursa date bulsun
+    date = re.findall(date_pattern, metin)
+    #df_date.append(date)
+    time_pattern = r'(\d{1,2}:\d{2})'
+    time = re.findall(time_pattern, metin) # xx:xx:Xx seklinde olutsa da saat oalrak alsın
+    #df_time.append(time)
+    print(metin)
+    print("Date: ", date)
+    print("Time: ", time)
+    company_name= 'Null'
+    address= 'Null' 
+    date=date
+    time=time
+    product_names='Null' 
+    product_price=0
+    total_amount=0
+    topKDV=0
+    new_document = {
+        'company_name': company_name,
+        'address': address, 
+        'date':date, 
+        'time':time, 
+        'product_names':product_names, 
+        'product_price':product_price,
+        'total_amount':total_amount,
+        'topKDV':topKDV,
+        'items': ['item1', 'item2', 'item3']
+    }
+
+    result = collection.insert_one(new_document)
+    print(f'Document inserted with _id: {result.inserted_id}')
+    
 
 # Yeni belge eklemek için örnek veri
-new_document = {
-    'company_name': company_name,
-    'address': address, 
-    'date':date, 
-    'time':time, 
-    'product_names':product_names, 
-    'product_price':product_price,
-    'total_amount':total_amount,
-    'topKDV':topKDV,
-    'items': ['item1', 'item2', 'item3']
-}
+
+
 
 # Koleksiyona belge eklemek
-result = collection.insert_one(new_document)
-print(f'Document inserted with _id: {result.inserted_id}')
+
 
 """ image_dir='gradproject-main\\'
 images = [file for file in os.listdir(image_dir) if file.lower().endswith(".jpg")]
