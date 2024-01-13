@@ -4,7 +4,14 @@ from PIL import Image
 import re
 import pandas as pd
 import os
+from flask import Flask, request, jsonify
+from flask_pymongo import PyMongo
+from flask_cors import CORS
+import base64
 
+
+app = Flask(__name__)
+CORS(app)
 
 mongo_uri = 'mongodb+srv://basak:basakgradproject@cluster0.g7mhazp.mongodb.net/'
 client = MongoClient(mongo_uri)

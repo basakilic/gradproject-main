@@ -6,8 +6,10 @@ import Login from './Login'
 import Signup from './Signup'
 import ForgotPassword from './ForgotPassword'
 import Profile from './Profile'
-import EditProfile from './EditProfile'
+import ReceiptDetails from './ReceiptDetails'
+import ImageUpload from './ImageUpload'
 
+const mongo_uri= 'mongodb+srv://basak:basakgradproject@cluster0.g7mhazp.mongodb.net/'
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
         <Route path='/profile' element={<Profile />}></Route>
         <Route path='/editprofile' element={<Profile />}></Route>
+        <Route path='/receiptdetails' element={<ReceiptDetails />}></Route>
+        <Route path='/imageupload' element={<ImageUpload />}></Route>
 
       </Routes>
     </BrowserRouter>)
