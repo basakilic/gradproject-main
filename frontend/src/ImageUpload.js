@@ -1,15 +1,29 @@
 import React, { useState } from "react";
-import "./imageUpload.css"; // Import the CSS file
+import "./ImageUpload.css"; // Import the CSS file
 
 function ImageUpload() {
   const [image, setImage] = useState(null);
 
-  const handleChooseImage = (e) => {
-    // Your logic for choosing an image from local storage
+  const handleChooseImage = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.click();
+
+    input.onchange = (e) => {
+      const selectedFile = e.target.files[0];
+      if (selectedFile) {
+        const reader = new FileReader();
+        reader.readAsDataURL(selectedFile);
+        reader.onload = () => {
+          setImage(reader.result);
+        };
+      }
+    };
   };
 
   const handleDeleteImage = () => {
-    // Your logic for deleting the chosen image
+    setImage(null);
   };
 
   return (
@@ -32,5 +46,3 @@ function ImageUpload() {
 }
 
 export default ImageUpload;
-
-

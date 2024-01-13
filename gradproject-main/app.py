@@ -13,6 +13,10 @@ from bson.objectid import ObjectId
 import re
 #import pandas as pd
 import os
+from flask import Flask, request, jsonify
+#from flask_pymongo import PyMongo
+from flask_cors import CORS
+import base64
 
 app = Flask(__name__)
 
