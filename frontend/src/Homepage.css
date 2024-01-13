@@ -1,0 +1,24 @@
+body {
+  background-color: #2F8576;
+  color: #f57575;
+  font-family: Arial, sans-serif;
+  /* Choose your preferred font-family */
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #FFFFFF;
+  /* Set background color for the container */
+  border-radius: 10px;
+  /* Add rounded corners to the container */
+}
+
+h1,
+h2,
+h3,
+p {
+  color: #2F8576;
+  /* Set text color for headers and paragraphs */
+}
