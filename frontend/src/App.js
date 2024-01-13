@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react'
-import { BrowserRouter, Routes, Route,Switch } from 'react-router-dom'
-import Homepage from './homepage'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Homepage from './Homepage'
 import Login from './Login'
 import Signup from './Signup'
 import ForgotPassword from './ForgotPassword'
@@ -17,11 +17,11 @@ import HeaderComponent from './components/HeaderComponent';
 function App() {
   return (
     <div>
-        <Routes>
+        <Router>
               <HeaderComponent />
                 <div className="container">
-                    <Switch> 
-                          <Route path = "/" exact component = {ListReceiptsComponent}></Route>
+                    <Routes> 
+                          {/* <Route path = "/" exact component = {ListReceiptsComponent}></Route> */}
                           <Route path = "/receipts" component = {ListReceiptsComponent}></Route>
                           {/* <Route path = "/add-receipt/:id" component = {CreateReceiptComponent}></Route>
                           <Route path = "/view-receipt/:id" component = {ViewReceiptComponent}></Route> */}
@@ -33,10 +33,10 @@ function App() {
                           <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
                           <Route path='/profile' element={<Profile />}></Route>
                           <Route path='/editprofile' element={<Profile />}></Route>
-                    </Switch>
+                    </Routes>
                 </div>
               {/* <FooterComponent /> */}
-        </Routes>
+        </Router>
     </div>
     
   );

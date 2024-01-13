@@ -11,7 +11,7 @@ import yaml
 from flask_cors import CORS
 from bson.objectid import ObjectId
 import re
-import pandas as pd
+#import pandas as pd
 import os
 
 app = Flask(__name__)
@@ -160,7 +160,7 @@ def onedata(id):
         print('\n # Update successful # \n')
         return jsonify({'status': 'Data id: ' + id + ' is updated!'})
     
-@app.route('upload')
+@app.route('/upload')
 def read_image():
     images_file = "gradproject-main\pictures"
     dosya_listesi = os.listdir(images_file)
