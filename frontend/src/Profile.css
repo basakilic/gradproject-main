@@ -1,0 +1,80 @@
+body {
+  background-color: #2F8576;
+  color: #f57575;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.profile-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-title {
+  font-size: 24px;
+}
+
+.edit-profile-button {
+  background-color: #2F8576;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-profile-button:hover {
+  background-color: #1D614E;
+}
+
+.profile-section {
+  margin-top: 20px;
+}
+
+.profile-section-title {
+  font-size: 25px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.profile-info {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.profile-info-label {
+  font-weight: bold;
+  width: 120px;
+}
+
+.profile-info-value {
+  flex-grow: 1;
+}
+
+.become-user-button {
+  background-color: #2F8576;
+  color: #f57575;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.become-user-button:hover {
+  background-color: #1D614E;
+}
+
+.dropbtn {
+  margin-right: 10px; /* Add this line to move the button to the left */
+}
