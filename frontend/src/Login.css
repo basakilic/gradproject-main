@@ -1,80 +1,111 @@
-/* Add this CSS code to your existing ForgotPassword.css file or create a new one */
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Cambria', sans-serif;
-  /* Change to your preferred font */
-}
-
-.bg-primary {
-  background-color: #2F8576 !important;
-}
-
-.bg-white {
-  background-color: #FFFFFF;
-}
-
-.d-flex {
+.login-container {
   display: flex;
-}
-
-.justify-content-center {
   justify-content: center;
-}
-
-.align-items-center {
   align-items: center;
-}
-
-.vh-100 {
   height: 100vh;
+  background-image: linear-gradient(to right top, #faebd7, #ffe4c4, #f2f2f0);
 }
 
-.p-3 {
-  padding: 1rem;
+.logo-container {
+  flex: 1;
 }
 
-.rounded {
-  border-radius: 10px;
+.logo-link {
+  text-decoration: none;
 }
 
-.w-50 {
-  width: 50%;
+.logo-image {
+  width: 100px;
+  height: auto;
+  margin-left: 120px;
 }
 
-.mb-3 {
-  margin-bottom: 1rem;
-  font-size: 1.4rem;
-  /* Adjust the font size as needed */
 
+.login-content {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
 }
 
-.form-control {
-  border-radius: 0;
-  font-size: 1.2rem;
-  /* Adjust the font size as needed */
-
+.login-title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  text-transform: uppercase;
 }
 
-.text-danger {
-  color: #b62c2c;
+.login-form {
+  margin-bottom: 20px;
 }
 
-.btn-success {
-  background-color: #2F8576;
-  color: #FFFFFF;
+.login-input-group {
+  margin-bottom: 20px;
 }
 
-.green-btn {
-  background-color: #2F8576 !important;
-  color: #FFFFFF !important;
+.login-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
   border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
 }
 
-.green-btn:hover {
-  background-color: #FFD3E6 !important;
-  color: #2F8576 !important;
-  transition: 0.3s;
+.login-input:focus {
+  outline: none;
+  border-color: #ff5500;
+}
 
+.login-error {
+  color: #dc3545;
+  margin-top: 5px;
+}
+
+.login-btn {
+  display: block;
+  width: 100%;
+  background-color: #ffa23b;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #ff8800;
+}
+
+.login-options {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.create-account-link,
+.admin-login-link {
+  margin-left: 10px;
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.create-account-link:hover,
+.admin-login-link:hover {
+  color: #0056b3;
 }

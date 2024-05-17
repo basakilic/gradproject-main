@@ -3,88 +3,104 @@ import { Link, useNavigate } from 'react-router-dom'
 import validation from './LoginValidation';
 import axios from 'axios'
 import './Login.css';
-
-import Navbar from './Navbar';
+import logo from './logo.jpg';
 
 function Login() {
-    const [values, setValues] = useState({
-        email: '',
-        password: '',
-    })
+  const [values, setValues] = useState({
+    email: '',
+    password: ''
+  })
 
-    const navigate = useNavigate();
-    const [errors, setErrors] = useState({})
-    const handleInput = (event) => {
-        setValues(prev => ({ ...prev, [event.target.name]: [event.target.value] }))
+  const navigate = useNavigate();
+  const [errors, setErrors] = useState({})
+  const handleInput = (event) => {
+    setValues(prev => ({ ...prev, [event.target.name]: [event.target.value] }))
+  }
+  const handleSubmit = (event) => {
+
+    event.preventDefault();
+    const err = validation({ email: values.email, password: values.password });
+    setErrors(validation({ email: values.email, password: values.password })); setErrors(err);
+    if (errors.email === "" && errors.password === "") {
+      axios.post('http://localhost:8081/login', { email: values.email, password: values.password })
+        .then(res => {
+          console.log(res.data.memberstatus);
+          if (res.data.success) {
+            localStorage.setItem('username', res.data.username);
+            localStorage.setItem('name', res.data.name);
+            localStorage.setItem('surname', res.data.surname);
+            localStorage.setItem('email', values.email);
+            localStorage.setItem('memberstatus', res.data.memberstatus);
+            localStorage.setItem('id', res.data.id);
+            localStorage.setItem('password', res.data.password);
+
+            navigate('/');
+          } else {
+            alert("Email or Password is wrong");
+          }
+        })
+
+        .catch(err => console.log(err));
     }
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const err = validation({ email: values.email, password: values.password });
-        setErrors(validation({ email: values.email, password: values.password })); setErrors(err);
-        if (errors.email === "" && errors.password === "") {
-
-            axios.post('http://localhost:8081/login', { email: values.email, password: values.password })
-                .then(res => {
-                    if (res.data.success) {
-                        localStorage.setItem('username', res.data.username);
-                        localStorage.setItem('name', res.data.name);
-                        localStorage.setItem('surname', res.data.surname);
-                        localStorage.setItem('email', values.email);
-                        localStorage.setItem('memberstatus', res.data.memberstatus);
-
-                        navigate('/homepage');
-                    } else {
-                        alert("Email or Password is wrong");
-                    }
-                })
-
-                .catch(err => console.log(err));
-        }
 
 
-    }
-    useEffect(() => {
+  }
+  useEffect(() => {
 
-        localStorage.removeItem('username');
-        localStorage.removeItem('name');
-        localStorage.removeItem('surname');
-        localStorage.removeItem('email');
+    localStorage.removeItem('username');
+    localStorage.removeItem('name');
+    localStorage.removeItem('surname');
+    localStorage.removeItem('email');
+    localStorage.removeItem('memberstatus');
+    localStorage.removeItem('password');
+    localStorage.removeItem('id');
 
-    }, []);
+  }, []);
 
-    return (
-        <div>
-            <Navbar /> {/* Add the Navbar component here */}
-            <div className='d-flex justify-content-center align-items-center  vh-100'>
-                <div className='bg-white p-3 rounded w-50 '>
+  return (
 
-                    <h2>Log-In</h2>
-                    <form action="" onSubmit={handleSubmit}>
 
-                        <div className='mb-3'>
-                            <label htmlFor="email"> <strong>Email</strong></label>
-                            <input type="email" placeholder='Enter Email' name='email'
-                                onChange={handleInput} className='form-control rounded-0' />
-                            {errors.email && <span className='text-danger'> {errors.email}</span>}
-                        </div>
-                        <div className='mb-3'>
-                            <label htmlFor="password"><strong>Password</strong></label>
-                            <input type="password" placeholder='Enter Password' name='password'
-                                onChange={handleInput} className='form-control rounded-0' />
-                            {errors.password && <span className='text-danger'> {errors.password}</span>}
-                        </div>
-                        <button type='submit' className='btn btn-success w-100 green-btn'> Log in </button>
-                        <p>You agreed to our terms and policies</p>
-                        <Link to="/signup" className='btn btn-default border w-100 bg-light rounded-0 text-decoration-none  '> Create Account</Link>
-                        <p></p>
-                        <Link to="/forgotpassword" className='btn btn-default border w-100 bg-light rounded-0 text-decoration-none  '> Forgot Password</Link>
+    <div className="login-container">
 
-                    </form>
-                </div>
-            </div>
+      <div className="login-content">
+        <div className="login-image">
+          <img src={logo} alt="Logo" className="logo-image" /></div>
+        <h2 className="login-title"> User Login</h2>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <div className="login-input-group">
+            <label className="login-label" htmlFor="email"> Email</label>
+            <input className="login-input" type="email" placeholder="Enter Email" name="email" value={values.email} onChange={handleInput} />
+            {errors.email && <span className="login-error">{errors.email}</span>}
+          </div>
+          <div className="login-input-group">
+            <label className="login-label" htmlFor="password">
+              Password
+            </label>
+            <input
+              className="login-input"
+              type="password"
+              placeholder="Enter Password"
+              name="password"
+              value={values.password}
+              onChange={handleInput}
+            />
+            {errors.password && <span className="login-error">{errors.password}</span>}
+          </div>
+          <button type="submit" className="login-btn">
+            Log In
+          </button>
+        </form>
+        <div className="login-options">
+          <Link className="create-account-link" to="/signup">
+            Create Account
+          </Link>
+          <Link className="admin-login-link" to="/adminlogin">
+            Admin Login
+          </Link>
         </div>
-
-    )
+      </div>
+    </div>
+  );
 }
 
-export default Login 
+export default Login
