@@ -1,14 +1,11 @@
-// Navbar.js
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css'; // Include the CSS file
-import logo from './logo.png';
+import logo from './logo.jpg';
 
 function Navbar() {
   const navigate = useNavigate();
   useEffect(() => {
-    // Any other initialization logic you may need
   }, []);
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -24,43 +21,43 @@ function Navbar() {
     localStorage.removeItem('memberstatus');
     navigate('/', { replace: true });
     window.history.pushState(null, null, window.location.pathname);
-    window.addEventListener('popstate', function (event) {
-      if (event.state) {
+    window.addEventListener('popstate', function (workshop) {
+      if (workshop.state) {
         window.history.pushState(null, null, window.location.pathname);
       }
     });
   };
 
   const renderSearchBar = () => {
-    const handleSearchChange = (event) => {
-      setSearchQuery(event.target.value);
+    const handleSearchChange = (workshop) => {
+      setSearchQuery(workshop.target.value);
     };
 
-    const handleSearch = (event) => {
-      event.preventDefault();
+    const handleSearch = (workshop) => {
+      workshop.preventDefault();
       if (searchQuery.trim() !== '') {
-        fetch(`http://localhost:8081/events?name=${searchQuery}`)
+        fetch(`http://localhost:8081/workshops?name=${searchQuery}`)
           .then(response => response.json())
           .then(data => {
-            const matchedEvent = data.find(event => event.name === searchQuery);
+            const matchedEvent = data.find(workshop => workshop.name === searchQuery);
             if (matchedEvent) {
-              navigate('/searchEvents', { state: { event: matchedEvent } });
+              navigate('/searchworkshop', { state: { workshop: matchedEvent } });
             } else {
-              alert('No events match. Please try again with a different name.');
+              alert('No workshops match. Please try again with a different name.');
             }
           })
           .catch(error => console.error('Error fetching search results:', error));
       }
     };
 
-    if (location.pathname === '/showevents' || location.pathname === '/searchEvents' || location.pathname === '/showpurchasedtickets') {
+    if (location.pathname === '/showworkshops' || location.pathname === '/searchworkshop' || location.pathname === '/showpurchasedtickets') {
       return (
         <form className="form-inline" onSubmit={handleSearch}>
           <div className="input-group">
             <input
               className="form-control"
               type="search"
-              placeholder="Search An Event"
+              placeholder="Search An Workshop"
               aria-label="Search"
               style={{ width: '600px' }}
               onChange={handleSearchChange}
@@ -79,28 +76,32 @@ function Navbar() {
   };
 
   const renderUserSpecificLinks = () => {
-    return (
-      <li className={`nav-item dropdown ${location.pathname === '/profile' ? 'active' : ''}`}>
-        <div className="dropdown welcome-dropdown">
-          <button className="dropbtn">
-            Welcome {username}
-          </button>
-          <div className="dropdown-content">
-            <Link to="/profile">Profile</Link>
-            <a onClick={handleLogout}>Logout</a>
+    if (username != null) {
+      return (
+        <li className={`nav-item dropdown ${location.pathname === '/profile' ? 'active' : ''}`}>
+          <div className="dropdown welcome-dropdown">
+            <button className="dropbtn">
+              Welcome {username}
+            </button>
+            <div className="dropdown-content">
+              <Link to="/profile">Profile</Link>
+              <Link to="/login">Logout</Link>
+            </div>
           </div>
-        </div>
-      </li>
-    );
+        </li>
+      );
+    } else {
+      return (
+        <></>
+      )
+    }
   };
-
-
 
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/homepage">
-        <img src={logo} alt="ScanRes logo" width="200" height="50" />
+        <img src={logo} alt="FunHour logo" width="80" height="80" />
       </Link>
 
       <button
@@ -117,8 +118,12 @@ function Navbar() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
 
-          <Link to="/login" style={{ position: 'absolute', top: '25px', right: '150px', textAlign: 'center' }}>
-            <button className='btn btn-success'>Login</button>
+          {username === null &&
+            <Link to="/login" style={{ position: 'absolute', top: '25px', right: '150px', textAlign: 'center' }}>
+              <button className='btn btn-success'>Login</button>
+            </Link>}
+          <Link to="/organizedworkshops" style={{ position: 'absolute', top: '35px', right: '200px', textAlign: 'center' }}>
+            <button className='btn btn-success'>Organized Workshops</button>
           </Link>
           {renderUserSpecificLinks()}
         </ul>
