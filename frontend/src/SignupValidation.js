@@ -15,7 +15,7 @@ function validation(values) {
         error.name = "Name should not be empty"
     }
     else if (!name_pattern.test(values.name)) {
-        error.name = "Name's should not consist special characters or number"
+        error.name = "Name's can not be emtpy or consist special characters and number"
     }
     else { error.name = "" }
     if (values.surname === "") {
