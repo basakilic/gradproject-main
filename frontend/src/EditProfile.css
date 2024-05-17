@@ -1,0 +1,56 @@
+/* bu sayfayı silebilirim */
+
+.form-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.edit-profile-container {
+    width: 400px;
+    padding: 20px;
+    border: 10px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-left: 200px;
+
+}
+
+.form-control {
+    border-radius: 0 !important;
+}
+
+.btn {
+    border-radius: 0 !important;
+    margin-top: 10px;
+}
+
+.green-btn {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+.link-btn {
+    background-color: #28a745;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #007bff;
+    height: 100vh;
+}
+
+/* Style for the form labels */
+label {
+    font-weight: bold;
+}
+
+/* Style for the form headings */
+h2 {
+    margin-bottom: 20px;
+}

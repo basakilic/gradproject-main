@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import axios from 'axios'
-
-
+import './Profile.css';
 
 
 
@@ -80,7 +79,7 @@ function EditProfile() {
                         <div className='mb-3'>
                             <label htmlFor="email"><strong>Email</strong></label>
                             <input type="email" defaultValue={email} name='email'
-                                onChange={handleInput} className='form-control rounded-0' />
+                                onChange={handleInput} className='form-control rounded-0' readOnly />
                         </div>
 
                         <button type='submit' className='btn btn-success w-100 green-btn'> Save Changes </button>

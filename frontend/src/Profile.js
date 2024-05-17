@@ -9,6 +9,7 @@ function Profile() {
   const email = localStorage.getItem('email');
   const memberstatus = localStorage.getItem('memberstatus');
   const navigate = useNavigate();
+
   if (memberstatus === 'null') {
     localStorage.setItem('memberstatus', 'Guest');
   }
