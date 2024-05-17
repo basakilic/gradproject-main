@@ -8,25 +8,23 @@ import Login from './Login'
 import Signup from './Signup'
 import ForgotPassword from './ForgotPassword'
 import Profile from './Profile'
-import ReceiptDetails from './ReceiptDetails'
 import ImageUpload from './ImageUpload'
-//import FooterComponent from './components/FooterComponent';
-//import CreateReceiptComponent from './components/CreateReceiptComponent';
-//import UpdateReceiptComponent from './components/UpdateReceiptComponent';
-//import ViewReceiptComponent from './components/ViewReceiptComponent';
+import EditProfile from './EditProfile.js';
+import SearchWorkshops from './SearchWorkshops'
+import AdminLogin from './AdminLogin'
+import AdminHomepage from './AdminHomepage'
+import CreateWorkshop from './CreateWorkshop.js';
+import ShowWorkshop from './ShowWorkshop.js';
+import WorkshopDetails from './WorkshopDetails.js';
+import OrganizedWorkshops from './OrganizedWorkshops.js';
+import EditWorkshop from './EditWorkshop.js';
+
 
 function App() {
   return (
     <div>
       <Router>
-        <HeaderComponent />
-        <div className="container">
-          <Routes>
-          {/* <Route path = "/" exact component = {ListReceiptsComponent}></Route> */}
-        
-          {/* <Route path = "/add-receipt/:id" component = {CreateReceiptComponent}></Route>
-          <Route path = "/view-receipt/:id" component = {ViewReceiptComponent}></Route> */}
-          {/* <Route path = "/update-receipt/:id" component = {UpdateReceiptComponent}></Route> */}
+        <Routes>
           <Route path="/receipts" Component={ListReceiptsComponent}></Route>
           <Route path='/' element={<Homepage />}></Route>
           <Route path='/homepage' element={<Homepage />}></Route>
@@ -34,16 +32,21 @@ function App() {
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
-          <Route path='/editprofile' element={<Profile />}></Route>
-          <Route path='/receiptdetails' element={<ReceiptDetails />}></Route>
+          <Route path='/editprofile' element={<EditProfile />}></Route>
           <Route path='/imageupload' element={<ImageUpload />}></Route>
-          </Routes>
-          
-        </div>
-        {/* <FooterComponent /> */}
+          <Route path='/createworkshop' element={<CreateWorkshop />}></Route>
+          <Route path="/SearchWorkshops" element={<SearchWorkshops />} />
+          <Route path='/adminlogin' element={<AdminLogin />}></Route>
+          <Route path='/adminhomepage' element={<AdminHomepage />}></Route>
+          <Route path='/showworkshops' element={<ShowWorkshop />}></Route>
+          <Route path='/workshopdetails' element={<WorkshopDetails />}></Route>
+          <Route path='/organizedworkshops' element={<OrganizedWorkshops />}></Route>
+          <Route path='/editworkshop' element={<EditWorkshop />}></Route>
+
+        </Routes>
       </Router>
     </div>
   )
-        
+
 }
 export default App
